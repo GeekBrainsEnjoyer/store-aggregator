@@ -3,9 +3,9 @@ version: '3.9'
 services:
   web:
     build:
-      context: ./core
+      context: ./shop
       dockerfile: Dockerfile.prod
-    command: gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn shop.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/home/app/web/staticfile
       - media_volume:/home/app/web/mediafiles
