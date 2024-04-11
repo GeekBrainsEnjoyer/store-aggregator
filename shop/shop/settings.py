@@ -4,11 +4,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY', default='q')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = bool(os.environ.get('DEBUG', default=1))
+DEBUG = bool(os.environ.get('DEBUG', default=0))
 ALLOWED_HOSTS = os.environ.get(
-    "DJANGO_ALLOWED_HOSTS", default='127.0.0.1').split(' ')
+    "DJANGO_ALLOWED_HOSTS").split(' ')
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'item',
+    'dashboard',
     'bootstrap5',
 ]
 
