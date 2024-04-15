@@ -19,7 +19,7 @@ def new_item(request):
         form = ItemForm(request.POST, request.FILES)
 
         if form.is_valid():
-            item = form.save(commit=False)
+            item = form.save(False)
             item.created_by = request.user
             item.save()
 
@@ -27,5 +27,5 @@ def new_item(request):
 
     else:
         form = ItemForm()
-        
+
     return render(request, 'item/item_form.html', {'form': form})
