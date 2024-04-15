@@ -13,17 +13,27 @@
     <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
       <h1 class="mb-6 text-3xl">{{ item.name }}</h1>
       <p class="text-gray-500">
-        <strong>Price:</strong>{{ item.price }}
+        <strong>Price:&nbsp</strong>{{ item.price }}
       </p>
       <p class="text-gray-500">
-        <strong>Seller:</strong>{{ item.created_by.username }}
+        <strong>Seller:&nbsp</strong>{{ item.created_by.username }}
       </p>
-
       {% if item.description %}
         <p class="text-gray-700">
           <strong class="text-gray-500">Description:</strong><br />
           {{ item.description }}
         </p>
+        {% if request.user == item.created_by %}
+          <div class="col-span-2 p-6 bg-gray-200 rounded-xl">
+            <p>It's your item</p><br />
+            {# prettier-ignore #}
+            <a href="{% url 'item:edit' item.id %}" class="py-2 px-7 text-lg bg-teal-300 hover:bg-teal-200 rounded-xl text-white">Edit</a>
+            {# prettier-ignore #}
+            <a href="{% url 'item:delete' item.id %}" class="py-2 px-7 text-lg bg-red-600 hover:bg-red-700 rounded-xl text-white">DELETE</a>
+          </div>
+        {% else %}
+          <a href="#" class="py-2 px-7 text-lg bg-teal-300 hover:bg-teal-200 rounded-xl text-white">Contact seller</a>
+        {% endif %}
       {% endif %}
     </div>
   </div>

@@ -5,7 +5,7 @@ from .forms import SignupForm
 
 
 def index(request):
-    item_set = Item.objects.all()
+    item_set = Item.objects.filter(is_sold=False)
     category_set = Category.objects.all()
 
     return render(request, 'core/index.html',

@@ -1,12 +1,13 @@
 from django.urls import path
-from django.conf.urls.static import static
-from django.conf import settings
-
 from . import views
 
 app_name = 'item'
 
 urlpatterns = [
+    path('', views.browse, name='browse'),
+    path('new_item/', views.new_item, name='new_item'),
     path('<int:pk>/', views.detail, name='detail'),
-    path('new_item/', views.new_item, name='new_item')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('<int:pk>/delete/', views.delete, name='delete'),
+    path('<int:pk>/edit/', views.edit, name='edit'),
+
+]

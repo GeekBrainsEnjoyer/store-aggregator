@@ -16,7 +16,7 @@
 
   <body>
     <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200 bg-teal-600">
-      <a href="#" class="text-lg font-semibold text-gray-100 hover:text-gray-700">Browse</a>
+      <a href="{% url 'item:browse' %}" class="text-lg font-semibold text-gray-100 hover:text-gray-700">Browse</a>
       <a href="/" class="display-1 text-xl text-gray-900 font-bold">Gagashop</a>
       <div class="space-x-6">
         {% if request.user.is_authenticated %}
