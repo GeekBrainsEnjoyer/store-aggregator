@@ -13,7 +13,7 @@ fi
 
 python manage.py makemigrations
 python manage.py migrate --noinput
-python manage.py createcachetable --no-input --clear
+
 
 if [ "$DJANGO_SUPERUSER_USERNAME" ]
 then

@@ -10,6 +10,8 @@ DEBUG = bool(os.environ.get('DEBUG', default=0))
 ALLOWED_HOSTS = os.environ.get(
     "DJANGO_ALLOWED_HOSTS").split(' ')
 
+# ALLOWED_HOSTS = ['*']
+
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -21,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat',
     'core',
     'item',
     'dashboard',

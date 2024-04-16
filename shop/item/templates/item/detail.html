@@ -18,22 +18,25 @@
       <p class="text-gray-500">
         <strong>Seller:&nbsp</strong>{{ item.created_by.username }}
       </p>
+
       {% if item.description %}
         <p class="text-gray-700">
           <strong class="text-gray-500">Description:</strong><br />
           {{ item.description }}
         </p>
-        {% if request.user == item.created_by %}
-          <div class="col-span-2 p-6 bg-gray-200 rounded-xl">
-            <p>It's your item</p><br />
-            {# prettier-ignore #}
-            <a href="{% url 'item:edit' item.id %}" class="py-2 px-7 text-lg bg-teal-300 hover:bg-teal-200 rounded-xl text-white">Edit</a>
-            {# prettier-ignore #}
-            <a href="{% url 'item:delete' item.id %}" class="py-2 px-7 text-lg bg-red-600 hover:bg-red-700 rounded-xl text-white">DELETE</a>
-          </div>
-        {% else %}
-          <a href="#" class="py-2 px-7 text-lg bg-teal-300 hover:bg-teal-200 rounded-xl text-white">Contact seller</a>
-        {% endif %}
+      {% endif %}
+
+      {% if request.user == item.created_by %}
+        <div class="col-span-2 p-6 bg-gray-200 rounded-xl">
+          <p>It's your item</p><br />
+          {# prettier-ignore #}
+          <a href="{% url 'item:edit' item.id %}" class="py-2 px-7 text-lg bg-teal-300 hover:bg-teal-200 rounded-xl text-white">Edit</a>
+          {# prettier-ignore #}
+          <a href="{% url 'item:delete' item.id %}" class="py-2 px-7 text-lg bg-red-600 hover:bg-red-700 rounded-xl text-white">DELETE</a>
+        </div>
+      {% else %}
+        {# prettier-ignore #}
+        <a href="{% url 'chat:new' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact seller</a>
       {% endif %}
     </div>
   </div>
